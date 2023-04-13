@@ -147,23 +147,21 @@ public class boardDao {
 		return dto;
 	}
 	
-	public int deletelist(String bnum) {
+	public void deletelist(String bnum) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		String sql = "DELETE FROM board WHERE bnum=?";
 		
-		int dbFlag = 0;
-		
 		try {
 			Class.forName(driverName);			
 			conn = DriverManager.getConnection(url, username, password);
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, bnum);
+			pstmt.setString(1, bnum);				// bnum은 문자열이지만 DB에서 bnum(int) 검색가능하다
 			
-			dbFlag = pstmt.executeUpdate();			
+			pstmt.executeUpdate();			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -179,6 +177,5 @@ public class boardDao {
 				e.printStackTrace();
 			}			
 		}
-		return dbFlag;
 	}
 }

@@ -35,7 +35,7 @@ public class FrontController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 //		System.out.println(request.getContextPath());
 //		System.out.println(request.getRequestURI());
 		String uri = request.getRequestURI();
@@ -45,6 +45,7 @@ public class FrontController extends HttpServlet {
 		if(comm.equals("/write_form.do")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("writeForm.jsp");
 			dispatcher.forward(request, response);
+			
 		} else if(comm.equals("/write.do")) {
 			String writer = request.getParameter("writer");
 			String subject = request.getParameter("sunject");
@@ -62,6 +63,7 @@ public class FrontController extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
 			dispatcher.forward(request, response);
+			
 		} else if(comm.equals("/content_view.do")) {
 			
 			String bnum = request.getParameter("bnum");
@@ -71,6 +73,7 @@ public class FrontController extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("contentView.jsp");
 			dispatcher.forward(request, response);
+			
 		} else if(comm.equals("/delete.do")) {
 			
 			String bnum = request.getParameter("bnum");
